@@ -1,128 +1,701 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HUNANIMA - Machines Agricoles Simples</title>
+  <meta charset="UTF-8" />
+  <title>DEFI Verwaltungs GmbH — Corporate & Administrative Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="DEFI Verwaltungs GmbH — Management of Companies & Enterprises, Office Administrative Services. Green & Yellow modern website." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fefefe;
-      color: #333;
+    :root{
+      --bg:#f6fff4;          /* soft green */
+      --surface:#ffffff;
+      --border:#e5e7eb;
+      --text:#111827;
+      --muted:#6b7280;
+
+      /* requested colors */
+      --green:#16a34a;
+      --green2:#22c55e;
+      --yellow:#facc15;
+
+      --accent: var(--green);
+      --accent-soft: rgba(34,197,94,.12);
+      --yellow-soft: rgba(250,204,21,.16);
+
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --r-lg: 18px;
+      --r-md: 12px;
+      --max: 1160px;
     }
-    header {
-      background-color: #2e7d32; /* Vert foncé */
-      color: #fdd835; /* Jaune vif */
-      padding: 20px;
-      text-align: center;
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{
+      font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(900px 460px at 10% 0%, rgba(34,197,94,.22), transparent 55%),
+        radial-gradient(900px 460px at 90% 5%, rgba(250,204,21,.20), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
+    a{ color: var(--accent); text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .container{ max-width: var(--max); margin:0 auto; padding: 0 1.5rem 2.5rem; }
+
+    /* Header (D&B-like) */
+    .site-header{
+      background:#fff;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+      margin-bottom: 1.25rem;
     }
-    header p {
-      margin: 5px 0 0;
-      font-size: 1.2em;
+    .site-header-inner{
+      max-width: var(--max);
+      margin:0 auto;
+      padding: 0.95rem 1.5rem;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 1rem;
+      flex-wrap:wrap;
     }
-    nav {
-      background-color: #fdd835;
-      padding: 10px;
-      text-align: center;
+    .breadcrumbs{
+      font-size:.8rem;
+      color: var(--muted);
+      margin-bottom: .35rem;
     }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #2e7d32;
+    .breadcrumbs span{ color:#9ca3af; }
+
+    .company-name{
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: .02em;
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+      flex-wrap:wrap;
     }
-    .hero {
-      background: url('https://i.pinimg.com/550x/a9/df/51/a9df5172829f8c05f5b92f97553d41ae.jpg') no-repeat center center/cover;
-      height: 350px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 2px 2px 4px #000;
-      font-size: 2em;
+    .brand-badge{
+      font-size: .78rem;
+      font-weight: 800;
+      padding: .3rem .65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34,197,94,.28);
+      background: linear-gradient(135deg, rgba(34,197,94,.20), rgba(250,204,21,.20));
+      color:#14532d;
+      white-space:nowrap;
     }
-    section {
-      padding: 50px 20px;
-      text-align: center;
+    .subtitle{
+      margin-top:.15rem;
+      font-size:.92rem;
+      color: var(--muted);
     }
-    section h2 {
-      color: #2e7d32;
-      margin-bottom: 20px;
+
+    .header-right{
+      display:flex;
+      align-items:center;
+      gap:.7rem;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 999px;
+      padding: .62rem 1.15rem;
+      border: 1px solid transparent;
+      font-size: .86rem;
+      font-weight: 600;
+      cursor:pointer;
+      transition: .15s ease;
+      white-space:nowrap;
     }
-    .gallery img {
-      width: 280px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    .btn-primary{
+      background: linear-gradient(135deg, var(--green2), var(--yellow));
+      color:#0b1b10;
+      box-shadow: 0 10px 22px rgba(34,197,94,.18);
     }
-    footer {
-      background-color: #2e7d32;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
+    .btn-primary:hover{ transform: translateY(-1px); box-shadow: 0 14px 34px rgba(34,197,94,.22); }
+    .btn-outline{
+      background:#fff;
+      border-color: rgba(22,163,74,.45);
+      color:#14532d;
     }
-    footer p {
-      margin: 5px 0;
+    .btn-outline:hover{ background: var(--accent-soft); }
+
+    /* Tabs */
+    .tabs-bar{
+      background:#fff;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+    .tabs-inner{
+      max-width: var(--max);
+      margin:0 auto;
+      padding: .6rem 1.5rem 0;
+      display:flex;
+      align-items:center;
+      gap: 1.6rem;
+      overflow-x:auto;
+    }
+    .tab-link{
+      position:relative;
+      padding: .85rem 0;
+      font-size: .92rem;
+      color: var(--muted);
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .tab-link.active{
+      color:#14532d;
+      font-weight: 600;
+    }
+    .tab-link.active::after{
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:-1px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--green2), var(--yellow));
+    }
+
+    /* Cards */
+    .card{
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow);
+      padding: 1.7rem 1.7rem 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .card-title{
+      font-size: 1.12rem;
+      font-weight: 600;
+      margin-bottom: .6rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .divider{ height:1px; background: var(--border); margin: .7rem 0 1.25rem; }
+    .muted{ color: var(--muted); }
+
+    /* Overview layout */
+    .overview-grid{
+      display:grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, .9fr);
+      gap: 2.2rem;
+      align-items:flex-start;
+    }
+    dl dt{
+      font-size: .86rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-top: .75rem;
+      display:flex;
+      align-items:center;
+      gap: .45rem;
+    }
+    dl dd{
+      margin: .25rem 0 0;
+      font-size: .92rem;
+    }
+    .lock{
+      width: 18px; height: 18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: .75rem;
+      color: var(--muted);
+      background: #f9fafb;
+    }
+
+    .side-list{
+      list-style:none;
+      display:grid;
+      gap: .85rem;
+    }
+    .side-item{
+      display:flex;
+      align-items:flex-start;
+      gap: .65rem;
+      padding: .85rem .9rem;
+      border-radius: var(--r-md);
+      border: 1px solid rgba(22,163,74,.18);
+      background: linear-gradient(180deg, rgba(34,197,94,.14), rgba(250,204,21,.10));
+    }
+    .side-icon{
+      width: 30px; height: 30px;
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: .95rem;
+      color:#14532d;
+      border: 1px solid rgba(22,163,74,.22);
+      background: rgba(255,255,255,.75);
+      flex-shrink:0;
+    }
+    .side-label{ font-weight: 800; font-size: .88rem; }
+    .side-text{ color: var(--muted); font-size: .84rem; margin-top: .15rem; }
+
+    /* Services grid */
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1rem;
+    }
+    .mini{
+      border: 1px solid rgba(22,163,74,.18);
+      background: linear-gradient(180deg, rgba(34,197,94,.10), rgba(250,204,21,.08));
+      border-radius: var(--r-lg);
+      padding: 1.05rem;
+    }
+    .miniTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: .5rem;
+    }
+    .miniIcon{
+      width: 40px; height: 40px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(22,163,74,.22);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 1.05rem;
+      color:#14532d;
+    }
+    .chip{
+      font-size: .74rem;
+      font-weight: 900;
+      padding: .3rem .6rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(22,163,74,.18);
+      color:#14532d;
+      white-space:nowrap;
+    }
+    .mini h3{ font-size: .98rem; margin-bottom: .35rem; }
+    .mini p{ color: var(--muted); font-size: .88rem; }
+
+    /* Team / Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 1rem;
+    }
+    .gallery-main{
+      border-radius: var(--r-lg);
+      overflow:hidden;
+      border: 1px solid var(--border);
+      min-height: 360px;
+      position:relative;
+    }
+    .gallery-main img{ width:100%; height:100%; object-fit:cover; }
+    .gallery-note{
+      position:absolute;
+      left:14px; bottom:14px;
+      padding: .5rem .7rem;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 800;
+      color:#14532d;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(22,163,74,.18);
+      backdrop-filter: blur(10px);
+    }
+    .gallery-side{
+      display:grid;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .gallery-small{
+      border-radius: var(--r-lg);
+      overflow:hidden;
+      border: 1px solid var(--border);
+    }
+    .gallery-small img{ width:100%; height:100%; object-fit:cover; }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 1.5rem;
+      align-items:flex-start;
+    }
+    label{
+      display:block;
+      font-size: .82rem;
+      font-weight: 800;
+      color: var(--muted);
+      margin-bottom: .25rem;
+    }
+    input, textarea, select{
+      width:100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: .55rem .7rem;
+      background: #fbfffb;
+      outline:none;
+      font-size: .9rem;
+      transition: .15s ease;
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(22,163,74,.65);
+      box-shadow: 0 0 0 2px rgba(250,204,21,.22);
+      background:#fff;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    .hint{ margin-top: .5rem; font-size: .8rem; color: var(--muted); }
+
+    footer{
+      padding: 1.2rem 0 2.2rem;
+      text-align:center;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    @media (max-width: 980px){
+      .overview-grid, .gallery, .contact-grid{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 640px){
+      .grid3{ grid-template-columns: 1fr; }
+      .company-name{ font-size: 1.65rem; }
+      .tabs-inner{ gap: 1.1rem; }
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>HUNANIMA</h1>
-    <p>Machines Agricoles Simples et Fiables</p>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div>
+        <div class="breadcrumbs">HOME <span>/</span> BUSINESS DIRECTORY</div>
+        <div class="company-name">
+          DEFI Verwaltungs GmbH
+          <span class="brand-badge">Green • Yellow Theme</span>
+        </div>
+        <div class="subtitle">
+          Management of Companies &amp; Enterprises • Office Administrative Services
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a class="btn btn-outline" href="mailto:director@defiverwaltungs.shop">Email</a>
+        <a class="btn btn-primary" href="tel:+4917686754834">Call +49 176 86754834</a>
+      </div>
+    </div>
   </header>
 
-  <nav>
-    <a href="#about">À propos</a>
-    <a href="#gallery">Galerie</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <div class="hero">
-    <p>Votre partenaire pour des machines agricoles durables</p>
+  <!-- Tabs -->
+  <div class="tabs-bar">
+    <div class="tabs-inner">
+      <div class="tab-link active" data-tab="overview">Overview</div>
+      <div class="tab-link" data-tab="services">Services</div>
+      <div class="tab-link" data-tab="team">Team</div>
+      <div class="tab-link" data-tab="contact">Contacts</div>
+    </div>
   </div>
 
-  <section id="about">
-    <h2>À propos de nous</h2>
-    <p>
-      Chez <strong>HUNANIMA</strong>, nous nous spécialisons dans la fabrication et la distribution de 
-      <strong>machines agricoles simples</strong> pour faciliter le travail des agriculteurs. 
-      Nos solutions combinent <em>durabilité, efficacité et innovation</em> afin de répondre aux besoins de toutes les exploitations.
-    </p>
-  </section>
+  <main class="container">
 
-  <section id="gallery">
-    <h2>Nos Machines</h2>
-    <div class="gallery">
-      <img src="http://ogden_images.s3.amazonaws.com/www.motherearthnews.com/images/2014/11/22234423/Boaz-Mini-Combine-jpg.jpg" alt="Mini moissonneuse">
-      <img src="https://krs-agro.ru/products/zagotovka_kormov/elho/19/7.jpg" alt="Machine agricole">
-      <img src="https://img.mod-network.net/files/images/6218ac69d37fb/SimpleFarmSilov1000_6222.jpg" alt="Équipement agricole simple">
-    </div>
-  </section>
+    <!-- OVERVIEW -->
+    <section id="tab-overview" class="card">
+      <div class="card-title">
+        <span>Overview</span>
+        <a href="javascript:void(0)" class="muted" style="font-size:.86rem;">Printer Friendly View</a>
+      </div>
+      <div class="divider"></div>
 
-  <section id="contact">
-    <h2>Contactez-nous</h2>
-    <p><strong>Email :</strong> admin@tyusex.shop</p>
-    <p><strong>Téléphone :</strong> +33 7 38 50 26 36</p>
-    <p><strong>Adresse :</strong> Avenue Baratier, Montmorency, 95160, France</p>
-  </section>
+      <div class="overview-grid">
+        <div>
+          <p class="muted" style="margin-bottom:.9rem;">
+            DEFI Verwaltungs GmbH provides corporate management and administrative support for organizations,
+            combining structured operations with reliable coordination and reporting.
+          </p>
+
+          <dl>
+            <dt>Company Description <span class="lock">i</span></dt>
+            <dd>
+              Corporate and administrative services including operational support, documentation workflows,
+              coordination of stakeholders, and structured office management.
+            </dd>
+
+            <dt>Key Principal</dt>
+            <dd>Jürgen Debus</dd>
+
+            <dt>Industry</dt>
+            <dd>Management of Companies and Enterprises • Office Administrative Services</dd>
+
+            <dt>Popular Search</dt>
+            <dd>DEFI Verwaltungs GmbH management, administrative services, office coordination.</dd>
+          </dl>
+        </div>
+
+        <aside>
+          <ul class="side-list">
+            <li class="side-item">
+              <div class="side-icon">✉️</div>
+              <div>
+                <div class="side-label">Email</div>
+                <div class="side-text"><a href="mailto:director@defiverwaltungs.shop">director@defiverwaltungs.shop</a></div>
+              </div>
+            </li>
+            <li class="side-item">
+              <div class="side-icon">☎️</div>
+              <div>
+                <div class="side-label">Phone</div>
+                <div class="side-text"><a href="tel:+4917686754834">+49 176 86754834</a></div>
+              </div>
+            </li>
+            <li class="side-item">
+              <div class="side-icon">📍</div>
+              <div>
+                <div class="side-label">Location</div>
+                <div class="side-text">Darmstadt, Hessen, Germany</div>
+              </div>
+            </li>
+            <li class="side-item">
+              <div class="side-icon">✅</div>
+              <div>
+                <div class="side-label">Focus</div>
+                <div class="side-text">Operations • Administration • Coordination • Compliance-ready documentation</div>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="tab-services" class="card" style="display:none;">
+      <div class="card-title">
+        <span>Services</span>
+        <span class="brand-badge">Structured Support</span>
+      </div>
+      <div class="divider"></div>
+
+      <div class="grid3">
+        <div class="mini">
+          <div class="miniTop">
+            <div class="miniIcon">🗂️</div>
+            <span class="chip">Admin</span>
+          </div>
+          <h3>Office Administration</h3>
+          <p>Document handling, scheduling, internal coordination, and structured reporting.</p>
+        </div>
+
+        <div class="mini">
+          <div class="miniTop">
+            <div class="miniIcon">🏢</div>
+            <span class="chip">Corporate</span>
+          </div>
+          <h3>Company Management</h3>
+          <p>Operational oversight, stakeholder coordination, and management support services.</p>
+        </div>
+
+        <div class="mini">
+          <div class="miniTop">
+            <div class="miniIcon">📑</div>
+            <span class="chip">Docs</span>
+          </div>
+          <h3>Documentation & Compliance</h3>
+          <p>Clean documentation workflows, record readiness, and consistent internal processes.</p>
+        </div>
+
+        <div class="mini">
+          <div class="miniTop">
+            <div class="miniIcon">🤝</div>
+            <span class="chip">Support</span>
+          </div>
+          <h3>Client Coordination</h3>
+          <p>Contact handling, requests follow-up, and structured communication management.</p>
+        </div>
+
+        <div class="mini">
+          <div class="miniTop">
+            <div class="miniIcon">📊</div>
+            <span class="chip">Ops</span>
+          </div>
+          <h3>Operational Reporting</h3>
+          <p>Weekly/monthly summaries, dashboards coordination, and performance tracking support.</p>
+        </div>
+
+        <div class="mini">
+          <div class="miniTop">
+            <div class="miniIcon">🧠</div>
+            <span class="chip">Strategy</span>
+          </div>
+          <h3>Process Improvement</h3>
+          <p>Optimization of internal workflows for speed, clarity, and accountability.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="tab-team" class="card" style="display:none;">
+      <div class="card-title">
+        <span>Team</span>
+        <span class="muted" style="font-size:.86rem;">People • Operations • Administration</span>
+      </div>
+      <div class="divider"></div>
+
+      <div class="gallery">
+        <div class="gallery-main">
+          <img src="https://images.prismic.io/xapiens-id/aKRnm6Tt2nPbadUd_group-people-working-website-template.jpg?auto=format%2Ccompress&q=70&fit=crop"
+               alt="Team working" />
+          <div class="gallery-note">Reliable, structured, professional</div>
+        </div>
+
+        <div class="gallery-side">
+          <div class="gallery-small">
+            <img src="https://pittcc.edu/wp-content/uploads/2023/04/Office-Administration-Background.jpg" alt="Office administration" />
+          </div>
+          <div class="gallery-small">
+            <img src="https://guu.ru/wp-content/uploads/gettyimages-1179186162-min.jpg__1629713077__73383-scaled.jpg" alt="Corporate work" />
+          </div>
+        </div>
+      </div>
+
+      <div style="height:12px;"></div>
+
+      <div class="grid3">
+        <div class="gallery-small" style="height:190px;">
+          <img src="https://www.globallingua.ca/hubfs/anglais-entreprise.jpg" alt="Business communication"
+               style="height:190px;object-fit:cover;" />
+        </div>
+        <div class="gallery-small" style="height:190px;">
+          <img src="https://twt-thumbs.washtimes.com/media/image/2023/10/18/shutterstock_49368244_c0-192-3784-2399_s1200x700.jpg?8473ef14fd7d4b8073fadeb2d8e0f367301fed2b"
+               alt="Office team" style="height:190px;object-fit:cover;" />
+        </div>
+        <div class="gallery-small" style="height:190px;">
+          <img src="https://images.prismic.io/xapiens-id/aKRnm6Tt2nPbadUd_group-people-working-website-template.jpg?auto=format%2Ccompress&q=70&fit=crop"
+               alt="Team collaboration" style="height:190px;object-fit:cover;" />
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section id="tab-contact" class="card" style="display:none;">
+      <div class="card-title">
+        <span>Contacts</span>
+        <span class="brand-badge">Fast Reply</span>
+      </div>
+      <div class="divider"></div>
+
+      <div class="contact-grid">
+        <div>
+          <form action="mailto:director@defiverwaltungs.shop" method="post" enctype="text/plain">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic">
+              <option>Office administration</option>
+              <option>Company management</option>
+              <option>Documentation & compliance</option>
+              <option>Other</option>
+            </select>
+
+            <label for="message" style="margin-top:.6rem;">Message</label>
+            <textarea id="message" name="message"
+              placeholder="Tell us what you need: scope, timeline, and preferred contact details."></textarea>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:.75rem;">
+              <button class="btn btn-primary" type="submit">Send Email</button>
+              <a class="btn btn-outline" href="tel:+4917686754834">Call Now</a>
+            </div>
+
+            <div class="hint">
+              Tip: Add company name + required support type to get a faster response.
+            </div>
+          </form>
+        </div>
+
+        <aside>
+          <ul class="side-list">
+            <li class="side-item">
+              <div class="side-icon">✉️</div>
+              <div>
+                <div class="side-label">Email</div>
+                <div class="side-text"><a href="mailto:director@defiverwaltungs.shop">director@defiverwaltungs.shop</a></div>
+              </div>
+            </li>
+            <li class="side-item">
+              <div class="side-icon">☎️</div>
+              <div>
+                <div class="side-label">Phone</div>
+                <div class="side-text"><a href="tel:+4917686754834">+49 176 86754834</a></div>
+              </div>
+            </li>
+            <li class="side-item">
+              <div class="side-icon">📍</div>
+              <div>
+                <div class="side-label">Region</div>
+                <div class="side-text">Darmstadt • Hessen • Germany</div>
+              </div>
+            </li>
+            <li class="side-item">
+              <div class="side-icon">🧩</div>
+              <div>
+                <div class="side-label">Services</div>
+                <div class="side-text">Administration • Corporate management • Process support</div>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+  </main>
 
   <footer>
-    <p>&copy; 2025 HUNANIMA - Tous droits réservés.</p>
+    © <span id="year"></span> DEFI Verwaltungs GmbH • Green & Yellow Website Theme
   </footer>
 
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const tabLinks = document.querySelectorAll(".tab-link");
+    const sections = {
+      overview: document.getElementById("tab-overview"),
+      services: document.getElementById("tab-services"),
+      team: document.getElementById("tab-team"),
+      contact: document.getElementById("tab-contact")
+    };
+
+    tabLinks.forEach(l => {
+      l.addEventListener("click", () => {
+        const name = l.dataset.tab;
+        tabLinks.forEach(x => x.classList.remove("active"));
+        l.classList.add("active");
+        Object.keys(sections).forEach(k => {
+          sections[k].style.display = (k === name) ? "block" : "none";
+        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
 </body>
 </html>
